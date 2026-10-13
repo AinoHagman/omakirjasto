@@ -22,7 +22,7 @@ function Kirjakortti({ kirja, onSuosikkiPaina, onkoSuosikki }) {
       <div style={korttiTyylit.sisus}>
         <h3 style={korttiTyylit.nimi}>{kirja.title || "Ei nimeä"}</h3>
         <p style={korttiTyylit.tekija}>{tekijat}</p>
-        <p style={korttiTyylit.vuosi}>Kirjoitettu: {julkaisuvuosi}</p>
+        <p style={korttiTyylit.vuosi}>julkaisuvuosi: {julkaisuvuosi}</p>
         <button
           type="button"
           style={{

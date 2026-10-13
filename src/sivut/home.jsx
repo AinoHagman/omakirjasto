@@ -12,10 +12,14 @@ function Home({ onLisaaSuosikki, suosikit = [] }) {
 
     const haeKirjat = async () => {
       try {
-        const vastaus = await fetch("https://openlibrary.org/search.json?q=bestseller&limit=6");
+        const vastaus = await fetch("https://openlibrary.org/search.json?q=bestseller&limit=25");
         const data = await vastaus.json();
+        const satunnaisetKirjat = [...(data.docs || [])]
+              .sort(() => Math.random() - 0.5)
+              .slice(0, 6);
+
         if (onAktiivinen) {
-          setKirjat(data.docs || []);
+              setKirjat(satunnaisetKirjat);
         }
       } catch (virhe) {
         console.error("Virhe haettaessa kirjoja:", virhe);
@@ -52,7 +56,7 @@ return (
       </div>
 
       <section className="books-section">
-        <h2>Suositellut kirjat</h2>
+        <h2>satunnaisia löytöjä</h2>
 
         {latautuu ? (
           <p className="loading-text">Ladataan kirjoja...</p>
