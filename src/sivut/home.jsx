@@ -1,3 +1,4 @@
+import "../App.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Kirjakortti from "../komponentit/Kirjakortti";
@@ -12,7 +13,7 @@ function Home({ onLisaaSuosikki, suosikit = [] }) {
 
     const haeKirjat = async () => {
       try {
-        const vastaus = await fetch("https://openlibrary.org/search.json?q=fantasy&limit=6");
+        const vastaus = await fetch("https://openlibrary.org/search.json?q=bestseller&limit=6");
         const data = await vastaus.json();
         if (onAktiivinen) {
           setKirjat(data.docs || []);
@@ -33,41 +34,40 @@ function Home({ onLisaaSuosikki, suosikit = [] }) {
     };
   }, []);
 
-  return (
-   <div>
-  <header>
-    <h1>Kirjanurkka</h1>
-    <blockquote>
-      <p>
-        ”Fairy tales are more than true: not because they tell us that dragons exist, but because they tell us that dragons can be beaten.”
-      </p>
-      <footer>— Neil Gaiman, <em>Coraline</em></footer>
-    </blockquote>
-  </header>
+return (
+    <div className="home-container">
+      <header className="home-header">
+        <h1>Kirjanurkka</h1>
+        <blockquote className="quote-box">
+          <p>
+            ”Fairy tales are more than true: not because they tell us that dragons exist, but because they tell us that dragons can be beaten.”
+          </p>
+          <footer>— Neil Gaiman, <em>Coraline</em></footer>
+        </blockquote>
+      </header>
 
-  <div>
-    <button onClick={() => navigate("/haku")}>
-      Hae kirjoja
-    </button>
-  </div>
+      <div className="home-actions">
+        <button className="btn-primary" onClick={() => navigate("/haku")}>
+          Hae kirjoja
+        </button>
+      </div>
 
-  <section>
-    <h2>Suositellut kirjat</h2>
+      <section className="books-section">
+        <h2>Suositellut kirjat</h2>
 
-    {latautuu ? (
-      <p>Ladataan kirjoja...</p>
-    ) : (
-      <div>
-
-    {kirjat && kirjat.map((kirja, indeksi) => {
-      const onkoSuosikki = Array.isArray(suosikit) && suosikit.some((s) => s?.key === kirja?.key);
-      return (
-        <Kirjakortti
-            key={kirja.key || indeksi}
-            kirja={kirja}
-            onSuosikkiPaina={onLisaaSuosikki}
-            onkoSuosikki={onkoSuosikki}
-              />
+        {latautuu ? (
+          <p className="loading-text">Ladataan kirjoja...</p>
+        ) : (
+          <div className="book-grid">
+            {kirjat && kirjat.map((kirja, indeksi) => {
+              const onkoSuosikki = Array.isArray(suosikit) && suosikit.some((s) => s?.key === kirja?.key);
+              return (
+                <Kirjakortti
+                  key={kirja.key || indeksi}
+                  kirja={kirja}
+                  onSuosikkiPaina={onLisaaSuosikki}
+                  onkoSuosikki={onkoSuosikki}
+                />
               );
             })}
           </div>
@@ -76,5 +76,4 @@ function Home({ onLisaaSuosikki, suosikit = [] }) {
     </div>
   );
 }
-
 export default Home;

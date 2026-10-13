@@ -1,3 +1,4 @@
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 function Kirjakortti({ kirja, onSuosikkiPaina, onkoSuosikki }) {
   if (!kirja) return null;
 
@@ -21,7 +22,7 @@ function Kirjakortti({ kirja, onSuosikkiPaina, onkoSuosikki }) {
       <div style={korttiTyylit.sisus}>
         <h3 style={korttiTyylit.nimi}>{kirja.title || "Ei nimeä"}</h3>
         <p style={korttiTyylit.tekija}>{tekijat}</p>
-        <p style={korttiTyylit.vuosi}>Kirjattu: {julkaisuvuosi}</p>
+        <p style={korttiTyylit.vuosi}>Kirjoitettu: {julkaisuvuosi}</p>
         <button
           type="button"
           style={{
@@ -30,7 +31,12 @@ function Kirjakortti({ kirja, onSuosikkiPaina, onkoSuosikki }) {
           }}
           onClick={() => onSuosikkiPaina && onSuosikkiPaina(kirja)}
         >
-          {onkoSuosikki ? "💔 Poista suosikeista" : "✨ Lisää aarteisiin"}
+          {onkoSuosikki ? (
+            <FaHeart style={{ color: "#e8b4b8", fontSize: "1rem" }} />
+          ) : (
+            <FaRegHeart style={{ color: "#f0e6d2", fontSize: "1rem" }} />
+          )}
+          <span>{onkoSuosikki ? "Poista suosikeista" : "Lisää suosikkeihin"}</span>
         </button>
       </div>
     </div>
@@ -79,10 +85,14 @@ const korttiTyylit = {
     marginTop: "auto",
     border: "1px solid #8b6d3b",
     color: "#fff",
-    padding: "8px",
+    padding: "10px 14px",
     cursor: "pointer",
     borderRadius: "4px",
     fontSize: "0.85rem",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "8px",
   },
 };
 
