@@ -36,7 +36,7 @@ function Home({ onLisaaSuosikki, suosikit = [] }) {
 return (
     <div className="home-container">
       <header className="home-header">
-        <h1>Kirjanurkka</h1>
+        <h1>OMAKIRJASTO</h1>
         <blockquote className="quote-box">
           <p>
             ”Fairy tales are more than true: not because they tell us that dragons exist, but because they tell us that dragons can be beaten.”

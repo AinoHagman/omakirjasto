@@ -19,32 +19,74 @@ body {
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
+/* Yläosan navigointipalkki */
+.navbar-container {
+  text-align: center;
+  padding: 2rem 1rem 1.5rem 1rem;
+  border-bottom: 1px solid var(--border-soft);
+  background-color: var(--bg-cream);
+}
+
+.nav-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.2rem;
+  color: var(--olive-dark);
+  margin: 0 0 1rem 0;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-dark);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  background-color: var(--rose-light);
+  color: var(--olive-dark);
+}
+
 /* Etusivun pääsäiliö */
 .home-container {
   max-width: 900px;
   margin: 0 auto;
-  padding: 2.5rem 1.5rem;
+  padding: 3rem 1.5rem 3rem 1.5rem;
 }
 
 /* Yläosan otsikkoalue */
 .home-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 2.5rem;
 }
 
 .home-header h1 {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 2.6rem;
   color: var(--olive-dark);
-  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 10;
+  letter-spacing: 2px;
 }
 
 /* Roosan sävyinen lainauslaatikko */
 .quote-box {
   background-color: var(--rose-light);
   border-radius: 20px;
-  padding: 1.5rem 2rem;
-  margin: 0 auto 2rem auto;
+  padding: 2rem 2.5rem;
+  margin: 0 auto 3rem auto;
   max-width: 650px;
   border: 1px solid var(--dusty-rose);
 }

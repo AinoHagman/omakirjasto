@@ -27,7 +27,7 @@ function Kirjakortti({ kirja, onSuosikkiPaina, onkoSuosikki }) {
           type="button"
           style={{
             ...korttiTyylit.suosikkiNappi,
-            backgroundColor: onkoSuosikki ? "#800000" : "#3d3023",
+            backgroundColor: onkoSuosikki ? "#C47A83" : "#8E8B63",
           }}
           onClick={() => onSuosikkiPaina && onSuosikkiPaina(kirja)}
         >
@@ -45,8 +45,8 @@ function Kirjakortti({ kirja, onSuosikkiPaina, onkoSuosikki }) {
 
 const korttiTyylit = {
   kortti: {
-    backgroundColor: "#1f1912",
-    border: "2px solid #5a4527",
+    backgroundColor: "#FFFDF9",
+    border: "2px solid #E6DCBF",
     borderRadius: "6px",
     display: "flex",
     flexDirection: "column",
@@ -68,17 +68,17 @@ const korttiTyylit = {
   },
   nimi: {
     fontSize: "1rem",
-    color: "#f0e6d2",
+    color: "#3A342D",
     margin: "0 0 5px 0",
   },
   tekija: {
     fontSize: "0.85rem",
-    color: "#a89880",
+    color: "#6D6B49",
     margin: "0 0 5px 0",
-  },
+  }, 
   vuosi: {
     fontSize: "0.8rem",
-    color: "#8b7d6b",
+    color: "#6D6B49",
     margin: "0 0 10px 0",
   },
   suosikkiNappi: {
