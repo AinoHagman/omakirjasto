@@ -84,7 +84,7 @@ const korttiTyylit = {
   suosikkiNappi: {
     marginTop: "auto",
     border: "1px solid #8b6d3b",
-    color: "#fff",
+    color: "#ddc0c0",
     padding: "10px 14px",
     cursor: "pointer",
     borderRadius: "4px",
