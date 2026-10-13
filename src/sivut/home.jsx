@@ -1,4 +1,3 @@
-import "../App.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Kirjakortti from "../komponentit/Kirjakortti";
