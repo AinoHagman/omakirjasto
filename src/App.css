@@ -131,7 +131,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* Suositellut kirjat -osio */
+/*  kirjat -osio */
 .books-section h2 {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.8rem;
@@ -151,4 +151,39 @@ body {
   text-align: center;
   font-style: italic;
   color: var(--olive);
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  width: 420px;
+  max-width: 100%;
+  padding: 14px 18px;
+  border: 2px solid var(--border-soft);
+  border-radius: 999px;
+  background-color: var(--card-bg);
+  color: var(--text-dark);
+  font-size: 1rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--dusty-rose);
+  box-shadow: 0 0 0 3px rgba(232, 180, 184, 0.25);
+}
+
+.search-description {
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+  color: var(--olive-dark);
+  line-height: 1.6;
+  text-align: center;
 }

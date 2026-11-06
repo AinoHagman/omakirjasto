@@ -23,23 +23,36 @@ function Haku({ onLisaaSuosikki, suosikit = [] }) {
   };
 
   return (
-    <div>
+  <div className="home-container">
+    <div className="home-header">
       <h1>Hae kirjoja</h1>
-      <form onSubmit={teeHaku}>
-        <input
-          type="text"
-          value={hakusana}
-          onChange={(e) => setHakusana(e.target.value)}
-          placeholder="Kirjoita kirjan nimi..."
-        />
-        <button type="submit">Hae</button>
-      </form>
+    </div>
 
-      {latautuu && <p>Etsitään...</p>}
+    <form onSubmit={teeHaku} className="search-form">
+      <input
+        className="search-input"
+        type="text"
+        value={hakusana}
+        onChange={(e) => setHakusana(e.target.value)}
+        placeholder="Kirjoita kirjan nimi..."
+      />
 
-      <div>
+      <button className="btn-primary" type="submit">
+        Hae
+      </button>
+    </form>
+
+    {latautuu && (
+      <p className="loading-text">Etsitään kirjoja...</p>
+    )}
+
+    <section className="books-section">
+      <div className="book-grid">
         {tulokset.map((kirja, indeksi) => {
-          const onkoSuosikki = Array.isArray(suosikit) && suosikit.some((s) => s?.key === kirja?.key);
+          const onkoSuosikki =
+            Array.isArray(suosikit) &&
+            suosikit.some((s) => s?.key === kirja?.key);
+
           return (
             <Kirjakortti
               key={kirja.key || indeksi}
@@ -50,8 +63,9 @@ function Haku({ onLisaaSuosikki, suosikit = [] }) {
           );
         })}
       </div>
-    </div>
-  );
+    </section>
+  </div>
+);
 }
 
 export default Haku;
