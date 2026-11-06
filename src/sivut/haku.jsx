@@ -6,12 +6,14 @@ function Haku({ onLisaaSuosikki, suosikit = [] }) {
   const [tulokset, setTulokset] = useState([]);
   const [latautuu, setLatautuu] = useState(false);
   const [haettu, setHaettu] = useState(false);
+  const [virhe, setVirhe] = useState("");
 
 
   const teeHaku = async (e) => {
     e.preventDefault();
     if (!hakusana.trim()) return;
     setHaettu(true);
+    setVirhe("");
     setLatautuu(true);
     try {
       const vastaus = await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(hakusana)}&limit=10`);
@@ -19,6 +21,7 @@ function Haku({ onLisaaSuosikki, suosikit = [] }) {
       setTulokset(data.docs || []);
     } catch (virhe) {
       console.error("Virhe haussa:", virhe);
+      setVirhe("Hakua ei voitu suorittaa. Yritä uudelleen.");
     } finally {
       setLatautuu(false);
     }
@@ -47,6 +50,13 @@ function Haku({ onLisaaSuosikki, suosikit = [] }) {
     {latautuu && (
       <p className="loading-text">Etsitään kirjoja...</p>
     )}
+
+    {virhe && (
+      <p className="loading-txt">
+      {virhe}
+      </p>
+  )}
+
     {haettu && !latautuu && tulokset.length === 0 && (
       <p className="loading-text">
         hakutuloksia ei löytynyt. Yritä uudelleen.
