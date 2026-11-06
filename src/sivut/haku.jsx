@@ -5,11 +5,13 @@ function Haku({ onLisaaSuosikki, suosikit = [] }) {
   const [hakusana, setHakusana] = useState("");
   const [tulokset, setTulokset] = useState([]);
   const [latautuu, setLatautuu] = useState(false);
+  const [haettu, setHaettu] = useState(false);
+
 
   const teeHaku = async (e) => {
     e.preventDefault();
     if (!hakusana.trim()) return;
-
+    setHaettu(true);
     setLatautuu(true);
     try {
       const vastaus = await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(hakusana)}&limit=10`);
@@ -44,6 +46,11 @@ function Haku({ onLisaaSuosikki, suosikit = [] }) {
 
     {latautuu && (
       <p className="loading-text">Etsitään kirjoja...</p>
+    )}
+    {haettu && !latautuu && tulokset.length === 0 && (
+      <p className="loading-text">
+        hakutuloksia ei löytynyt. Yritä uudelleen.
+      </p>
     )}
 
     <section className="books-section">
